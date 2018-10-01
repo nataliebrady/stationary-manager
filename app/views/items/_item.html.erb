@@ -4,4 +4,11 @@
     | <%= link_to "edit", edit_item_path(item) %> | <%= link_to "delete", item, method: :delete,
                                   data: { confirm: "You sure?" } %>
   <% end %>
+
+  <% if item.borrowable? %>
+  Borrow item
+  <% else %>
+  Take item
+  <% end %>
+  
 </li>

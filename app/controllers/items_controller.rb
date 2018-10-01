@@ -47,6 +47,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-  	params.require(:item).permit(:name, :cupboard_id)
+  	params.require(:item).permit(:name, :cupboard_id, :borrowable, :item_quantity)
   end
 end

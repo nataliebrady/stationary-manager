@@ -6,6 +6,12 @@
   <%= f.label :cupboard %><br />
   <%= f.collection_select :cupboard_id, @cupboards, :id, :name, :prompt => "Select a cupboard" %>
 
+  <%= f.label :borrowable, "Can this item be borrowed?" %><br />
+  <%= f.select :borrowable, options_for_select([ ['No', false], ['Yes', true]]) %>
+
+  <%= f.label :item_quantity, "How many of these items are there?" %><br />
+  <%= f.select :item_quantity, options_for_select(0..50), { prompt: "Select a quantity" } %>
+
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
-  
+
 <% end %>

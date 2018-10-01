@@ -3,10 +3,18 @@
   <aside class="col-md-4">
       <h1>
       	<br><br>
-        <%= @item.name %><br><br>
-        
 
-        <%= @item.cupboard.name %>
+      	<h3>Item name:</h3>
+        <%= @item.name %>
+
+        <h3>Cupboard where it's stored:</h3>
+        <%= link_to @item.cupboard.name, cupboard_url(@item.cupboard) %>
+
+        <h3>Item quantity:</h3>
+        <%= @item.item_quantity %>
+
+        <h3>Can this item be borrowed?</h3>
+        <%= @item.borrowable %>
 
 
       </h1>
