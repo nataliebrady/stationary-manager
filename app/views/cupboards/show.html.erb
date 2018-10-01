@@ -1,0 +1,13 @@
+<% provide(:title, @cupboard.name) %>
+<div class="row">
+  <aside class="col-md-4">
+      <h1>
+      	<br><br>
+        <%= @cupboard.name %><br><br>
+
+         <% @cupboard.items.each do |item| %>
+         	<li><%= item.name %></li>
+         <% end %>
+      </h1>
+  </aside>
+</div>

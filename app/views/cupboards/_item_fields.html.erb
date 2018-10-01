@@ -1,0 +1,24 @@
+<div class='nested-fields question-box'>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href=".collapse-1">
+  
+        <i class="more-less glyphicon glyphicon-plus"></i></a>
+      </h4>
+    </div>
+    <div id="collapse-1" class="panel-collapse collapse collapse-1 in">
+      <div class="panel-body">
+
+        <p>The item:</p>
+        <%= f.text_field :name %>
+
+
+    <%= link_to_remove_association "Remove Item", f, class: "remove-question-link" %>
+        
+      </div>
+    </div>
+  </div>
+
+</div>

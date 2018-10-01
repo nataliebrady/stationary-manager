@@ -14,6 +14,8 @@ gem 'jbuilder',     '2.7.0'
 gem 'bootsnap'
 gem 'will_paginate',           '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
+gem "cocoon"
+gem 'formtastic', '~> 3.0'
 
 
 group :development, :test do

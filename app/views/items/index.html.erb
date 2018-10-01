@@ -1,0 +1,10 @@
+<% provide(:title, 'All stationary') %>
+<h1>All stationary</h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+  <%= render @items %>
+</ul>
+
+<%= will_paginate %>

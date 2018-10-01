@@ -1,0 +1,11 @@
+<%= form_for(@item) do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :cupboard %><br />
+  <%= f.collection_select :cupboard_id, @cupboards, :id, :name, :prompt => "Select a cupboard" %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  
+<% end %>

@@ -15,5 +15,6 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery
+//= require cocoon
 //= require bootstrap
 

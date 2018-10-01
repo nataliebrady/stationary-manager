@@ -1,0 +1,16 @@
+<%= form_for(@cupboard) do |f| %>
+    <%= f.label "Cupboard name" %>
+    <%= f.text_area :name %>
+    <div id='items'>
+      <div class="panel-group" id="accordion">
+      <%= f.fields_for :items do |item| %>
+        <%= render 'item_fields', :f => item %>
+      <% end %>
+      <div class='links add-items'>
+        <%= link_to_add_association 'Add Item', f, :items %>
+        <%= f.submit :submit, class: "btn-submit" %>
+      </div>
+    </div>
+    </div>
+
+  <% end %>
