@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
 
+  before_action :item_not_available, only: [:order]
+
   def index 
   	@items = Item.paginate(page: params[:page])
   end
@@ -10,6 +12,7 @@ class ItemsController < ApplicationController
   end
 
   def create
+    @cupboards = Cupboard.all
     @item = Item.new(item_params)
     if @item.save
       flash[:success] = "You have created a new item!"
@@ -53,5 +56,13 @@ class ItemsController < ApplicationController
 
   def item_params
   	params.require(:item).permit(:name, :cupboard_id, :borrowable, :item_quantity)
+  end
+
+  def item_not_available
+    @item = Item.find(params[:id])
+    if(@item.item_quantity == 0) 
+      flash[:danger] = "Item cannot be borrowed or used - none available"
+      redirect_to items_path
+    end
   end
 end

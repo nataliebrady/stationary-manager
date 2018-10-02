@@ -29,7 +29,7 @@ class CupboardsController < ApplicationController
 
   def create
     @cupboard = Cupboard.new(cupboard_params)
-    if @cupboard.save!
+    if @cupboard.save
       flash[:success] = "You created a new cupboard!"
       redirect_to @cupboard
     else

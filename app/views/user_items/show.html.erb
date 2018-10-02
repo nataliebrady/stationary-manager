@@ -28,6 +28,7 @@
 
          	<%= link_to 'Return',  returning_user_item_path(@user_item), method: :put, data: { confirm: 'Are you sure?' } %>
 
+
          	<% end %>
 
          	<% if @user_item.returned == true %>
@@ -39,6 +40,24 @@
          	<% else %>
          	This item was taken and will not be returned
          	<% end %>
+
+         	<br><br>
+
+
+			<!-- if the created at date (02/10/18) is less than the date today (e.g. 03/10/18 -2 = 01/10/18) then item is overdue -->
+
+			Status:
+			<%= if (@user_item.created_at < Date.today-2.days && @user_item.returned == false)
+			   "Overdue - you need to return the item!"
+			 else
+			   "Within return time"
+			  end %>
+			</p>
+
+			<p>
+			  Fine:
+			  <%= number_to_currency(@user_item.fine, {unit: '£', precision: 2 }) %>
+			</p>
       </h1>
   </aside>
 </div>

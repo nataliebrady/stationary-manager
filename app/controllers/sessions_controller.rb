@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :logged_in_cannot_login, only: [:create, :new]
+
   def new
   end
 
@@ -18,4 +20,14 @@ class SessionsController < ApplicationController
     log_out if logged_in?
     redirect_to root_url
   end
+
+  private 
+
+      def logged_in_cannot_login
+      if(logged_in?)
+        flash[:danger] = "You are already logged in."
+        redirect_to root_url
+      end
+    end
+
 end

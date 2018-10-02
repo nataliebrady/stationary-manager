@@ -1,4 +1,6 @@
 <%= form_for(@cupboard) do |f| %>
+<%= render 'error_messages', object: @cupboard %>
+
     <%= f.label "Cupboard name" %>
     <%= f.text_area :name %>
     <div id='items'>
