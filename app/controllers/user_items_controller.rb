@@ -1,7 +1,10 @@
 class UserItemsController < ApplicationController
 
-  def index
-    @user_items = UserItem.paginate(page: params[:page])   
+  def index  
+    @user_items = current_user.user_items.pluck(:id).uniq
+    @all_user_items = UserItem.where(id: @user_items)
+
+    @user_items = UserItem.paginate(page: params[:page]) 
   end
   
   def show

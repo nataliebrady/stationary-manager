@@ -13,7 +13,13 @@
       <% @user_items_all.not_returned.each do |item| %>
 
       <% if item.item.borrowable == true %>
+
+      <% if current_user.id == @user.id || current_user.admin? %>
       <%= link_to item.item.name, user_item_path(item.id) %><br>
+      <% else %>
+      <%= item.item.name %><br>
+      <% end %>
+
       <% end %>
 
       <% end %>
@@ -23,7 +29,13 @@
       <% @user_items_all.returned.each do |item| %>
 
       <% if item.item.borrowable == true %>
+
+      <% if current_user.id == @user.id || current_user.admin? %>
       <%= link_to item.item.name, user_item_path(item.id) %><br>
+      <% else %>
+      <%= item.item.name %>
+      <% end %>
+
       <% end %>
 
       <% end %>
@@ -33,7 +45,13 @@
       <% @user_items_all.returned.each do |item| %>
 
       <% if item.item.borrowable == false %>
+
+      <% if current_user.id == @user.id || current_user.admin? %>
       <%= link_to item.item.name, user_item_path(item.id) %><br>
+      <% else %>
+      <%= item.item.name %>
+      <% end %>
+      
       <% end %>
 
       <% end %>
