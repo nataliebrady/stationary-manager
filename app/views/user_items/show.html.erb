@@ -14,10 +14,28 @@
          	<h4>User who ordered this:</h4>
          	<%= @user_item.user.name %>
 
+         	<h4>Item quantity:</h4>
+         	<%= @user_item.item.item_quantity %>
+
          	<h4>Will this item be returned?</h4>
 
          	<% if @user_item.item.borrowable? %>
          	This item was borrowed and will be returned
+
+         	<br><br>
+
+         	<% if @user_item.user.id == current_user.id && @user_item.returned == false %>
+
+         	<%= link_to 'Return',  returning_user_item_path(@user_item), method: :put, data: { confirm: 'Are you sure?' } %>
+
+         	<% end %>
+
+         	<% if @user_item.returned == true %>
+
+         	This item was returned
+
+         	<% end %>
+
          	<% else %>
          	This item was taken and will not be returned
          	<% end %>

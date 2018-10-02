@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_01_161242) do
+ActiveRecord::Schema.define(version: 2018_10_02_132826) do
 
   create_table "cupboards", force: :cascade do |t|
     t.string "name"
@@ -25,12 +25,14 @@ ActiveRecord::Schema.define(version: 2018_10_01_161242) do
     t.integer "cupboard_id"
     t.boolean "borrowable", default: false
     t.integer "item_quantity"
+    t.string "status"
     t.index ["cupboard_id"], name: "index_items_on_cupboard_id"
   end
 
   create_table "user_items", force: :cascade do |t|
     t.integer "user_id"
     t.integer "item_id"
+    t.boolean "returned", default: true
     t.index ["item_id"], name: "index_user_items_on_item_id"
     t.index ["user_id"], name: "index_user_items_on_user_id"
   end

@@ -25,6 +25,10 @@ Rails.application.routes.draw do
     end
   end
   resources :cupboards
-  resources :user_items
+  resources :user_items do 
+      member do
+         put 'returning'
+     end
+  end
 
 end

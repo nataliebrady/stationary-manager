@@ -9,6 +9,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @user_items = current_user.user_items.pluck(:item_id).uniq
+    @all_user_items = Item.where(id: @user_items)
+
+    @user_items_all = @user.user_items
   end
 
   def new

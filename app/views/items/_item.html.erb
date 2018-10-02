@@ -5,10 +5,16 @@
                                   data: { confirm: "You sure?" } %>
   <% end %>
 
+<% if item.item_quantity == 0 %>
+
+<% else %>
+
   <% if item.borrowable? %>
   <%= link_to "Borrow item", order_stationary_url(item) %>
   <% else %>
   <%= link_to "Take item", order_stationary_url(item) %>
   <% end %>
+  
+<% end %>
   
 </li>

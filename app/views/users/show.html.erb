@@ -7,6 +7,37 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
+
+      <h4>Items I have borrowed and not returned yet</h4>
+
+      <% @user_items_all.not_returned.each do |item| %>
+
+      <% if item.item.borrowable == true %>
+      <%= link_to item.item.name, user_item_path(item.id) %><br>
+      <% end %>
+
+      <% end %>
+
+      <h4>Items I have borrowed and returned</h4>
+
+      <% @user_items_all.returned.each do |item| %>
+
+      <% if item.item.borrowable == true %>
+      <%= link_to item.item.name, user_item_path(item.id) %><br>
+      <% end %>
+
+      <% end %>
+
+      <h4>Items I have used</h4>
+
+      <% @user_items_all.returned.each do |item| %>
+
+      <% if item.item.borrowable == false %>
+      <%= link_to item.item.name, user_item_path(item.id) %><br>
+      <% end %>
+
+      <% end %>
+
     </section>
   </aside>
 </div>
