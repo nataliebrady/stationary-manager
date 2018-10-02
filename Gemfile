@@ -16,6 +16,7 @@ gem 'will_paginate',           '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem "cocoon"
 gem 'formtastic', '~> 3.0'
+gem 'pry'
 
 
 group :development, :test do

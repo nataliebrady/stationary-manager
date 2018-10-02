@@ -1,0 +1,26 @@
+
+<div class="row">
+  <aside class="col-md-4">
+      <h1>
+      	<br><br>
+      		<h2>Item receipt:</h2>
+
+      		<h4>Item product code:</h4>
+         	<%= @user_item.item_id %>
+
+         	<h4>Item name:</h4>
+         	<%= @user_item.item.name %>
+
+         	<h4>User who ordered this:</h4>
+         	<%= @user_item.user.name %>
+
+         	<h4>Will this item be returned?</h4>
+
+         	<% if @user_item.item.borrowable? %>
+         	This item was borrowed and will be returned
+         	<% else %>
+         	This item was taken and will not be returned
+         	<% end %>
+      </h1>
+  </aside>
+</div>

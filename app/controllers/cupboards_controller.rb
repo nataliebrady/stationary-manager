@@ -29,7 +29,7 @@ class CupboardsController < ApplicationController
 
   def create
     @cupboard = Cupboard.new(cupboard_params)
-    if @cupboard.save
+    if @cupboard.save!
       flash[:success] = "You created a new cupboard!"
       redirect_to @cupboard
     else
@@ -46,8 +46,8 @@ class CupboardsController < ApplicationController
     private
 
 	def cupboard_params
-  		params.require(:cupboard).permit(:name, 
-    		:items_attributes => [:name]
+  		params.require(:cupboard).permit(:name,  
+    		:items_attributes => [:name, :borrowable, :item_quantity, :_destroy]
   		)
 	end
 end

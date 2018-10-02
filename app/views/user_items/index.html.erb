@@ -1,0 +1,10 @@
+<% provide(:title, 'All users items') %>
+<h1>Order history</h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+  <%= render @user_items %>
+</ul>
+
+<%= will_paginate %>

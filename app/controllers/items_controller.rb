@@ -19,6 +19,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def order 
+    @items = Item.all
+    @item = Item.find(params[:id])
+  end
+
   def show 
   	@item = Item.find(params[:id])
   end

@@ -12,7 +12,13 @@
       <div class="panel-body">
 
         <p>The item:</p>
-        <%= f.text_field :name %>
+        <%= f.text_field :name %><br><br>
+
+        <p>Can this item be borrowed?</p>
+        <%= f.select :borrowable, options_for_select([ ['No', false], ['Yes', true]]) %><br><br>
+
+        <p>How many of these items are there?</p>
+        <%= f.select :item_quantity, options_for_select(0..50), { prompt: "Select a quantity" } %>
 
 
     <%= link_to_remove_association "Remove Item", f, class: "remove-question-link" %>

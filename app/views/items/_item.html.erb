@@ -6,9 +6,9 @@
   <% end %>
 
   <% if item.borrowable? %>
-  Borrow item
+  <%= link_to "Borrow item", order_stationary_url(item) %>
   <% else %>
-  Take item
+  <%= link_to "Take item", order_stationary_url(item) %>
   <% end %>
   
 </li>

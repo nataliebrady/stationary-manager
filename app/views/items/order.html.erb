@@ -1,0 +1,33 @@
+<% provide(:title, @item.name) %>
+<div class="row mainpage-container">
+  <div class="col-md-12">
+      
+<%= form_tag(user_items_path, method: "POST") do %>
+
+
+  <h4>Product code:</h4>
+  <p><%= @item.id %></p>
+
+  <h4>Item name:</h4>
+  <p><%= @item.name %></p>
+
+  <h4>Can this item be borrowed?</h4>
+  <p><%= @item.borrowable %></p>
+
+  <h4>Item quantity</h4>
+  <p><%= @item.item_quantity %></p>
+
+<%= fields_for :user_item do |item| %>
+  <%= item.hidden_field :item_id, value: @item.id %>
+  <%= item.hidden_field :user_id, value: current_user.id %>
+<% end %>
+
+
+  <br>
+
+  <%= submit_tag("Submit order", :class => "btn-submit") %>
+
+<% end %> 
+
+  </div>
+</div>
