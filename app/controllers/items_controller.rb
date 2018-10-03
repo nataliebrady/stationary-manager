@@ -4,6 +4,9 @@ class ItemsController < ApplicationController
 
   def index 
   	@items = Item.paginate(page: params[:page])
+
+    @user_items = current_user.user_items.pluck(:id).uniq
+    @all_user_items = UserItem.where(id: @user_items)
   end
 
   def new

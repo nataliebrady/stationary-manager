@@ -43,21 +43,28 @@
 
          	<br><br>
 
+         <% if @user_item.item.borrowable? %>
 
-			<!-- if the created at date (02/10/18) is less than the date today (e.g. 03/10/18 -2 = 01/10/18) then item is overdue -->
 
-			Status:
-			<%= if (@user_item.created_at < Date.today-2.days && @user_item.returned == false)
-			   "Overdue - you need to return the item!"
-			 else
-			   "Within return time"
-			  end %>
-			</p>
+         <!-- if the created at date (02/10/18) is less than the date today (e.g. 03/10/18 -2 = 01/10/18) then item is overdue -->
 
-			<p>
-			  Fine:
-			  <%= number_to_currency(@user_item.fine, {unit: '£', precision: 2 }) %>
-			</p>
+         Status:
+         <%= if (@user_item.created_at < Date.today-2.days && @user_item.returned == false)
+            "Overdue - you need to return the item!"
+          else
+            "Within return time"
+           end %>
+         </p>
+
+         <p>
+           Fine:
+           <%= number_to_currency(@user_item.fine, {unit: '£', precision: 2 }) %>
+         </p>
+
+         <% else %>
+
+         <% end %>
+
       </h1>
   </aside>
 </div>

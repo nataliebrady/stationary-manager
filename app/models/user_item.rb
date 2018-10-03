@@ -3,7 +3,8 @@ class UserItem < ApplicationRecord
 	belongs_to :item
 	
 	scope :not_returned, -> { where(returned: false) }
-    scope :returned, -> { where(returned: true) }
+  scope :returned, -> { where(returned: true) }
+  scope :fined, -> { where('created_at < ?', Date.today-2.days) }
 
     # Calculating the return date 
     def return_date
@@ -13,7 +14,7 @@ class UserItem < ApplicationRecord
     # Fine for books that have been rented more than 2 days
     def fine
       date_of_return = Date.parse(return_date)
-      date_today = Date.today
+      date_today = Date.today 
       if date_today > date_of_return && returned == false
         fine = (date_today - date_of_return).to_i * 1.00
         return fine

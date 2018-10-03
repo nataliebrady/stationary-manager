@@ -6,7 +6,11 @@
         <%= @cupboard.name %><br><br>
 
          <% @cupboard.items.each do |item| %>
-         	<li><%= link_to item.name, item_url(item) %></li>
+         	<h5>Product code:</h5>
+         	<%= link_to item.id, item_url(item) %> 
+         	<h5>Product name:</h5>
+         	<%= link_to item.name, item_url(item) %><br>
+         	<br><br>
          <% end %>
       </h1>
   </aside>

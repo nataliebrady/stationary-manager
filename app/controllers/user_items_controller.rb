@@ -1,6 +1,7 @@
 class UserItemsController < ApplicationController
 
   def index  
+    # Find the current users user_items id and find those id's in the UserItem table 
     @user_items = current_user.user_items.pluck(:id).uniq
     @all_user_items = UserItem.where(id: @user_items)
 

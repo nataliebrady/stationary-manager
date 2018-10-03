@@ -4,6 +4,9 @@
       <h1>
       	<br><br>
 
+        <h3>Product code:</h3>
+        <%= @item.id %>
+
       	<h3>Item name:</h3>
         <%= @item.name %>
 
@@ -14,8 +17,27 @@
         <%= @item.item_quantity %>
 
         <h3>Can this item be borrowed?</h3>
-        <%= @item.borrowable %>
 
+        <% if @item.borrowable? %>
+        Yes
+        <% else %>
+        No
+        <% end %>
+
+        <br><br>
+
+
+        <% if @item.item_quantity == 0 %>
+
+        <% else %>
+
+          <% if @item.borrowable? %>
+            <%= link_to "Borrow item", order_stationary_url(@item) %>
+          <% else %>
+            <%= link_to "Use item", order_stationary_url(@item) %>
+          <% end %>
+  
+        <% end %>
 
       </h1>
   </aside>
