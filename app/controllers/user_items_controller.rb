@@ -16,11 +16,6 @@ class UserItemsController < ApplicationController
   	@user_item = UserItem.new
   end
 
-  def order 
-    @items = Item.all
-    @item = Item.find(params[:id])
-  end
-
   def create
     @user_item = current_user.user_items.create(ordered_params)
     if @user_item.save

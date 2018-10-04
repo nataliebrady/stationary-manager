@@ -4,7 +4,6 @@ class UserItem < ApplicationRecord
 	
 	scope :not_returned, -> { where(returned: false) }
   scope :returned, -> { where(returned: true) }
-  scope :fined, -> { where('created_at < ?', Date.today-2.days) }
 
     # Calculating the return date 
     def return_date
