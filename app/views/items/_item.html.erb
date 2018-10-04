@@ -12,7 +12,15 @@
 <% else %>
 
   <% if item.borrowable?  %>
-  <%= link_to "Borrow item", order_stationary_url(item) %>
+
+    <% if(@all_user_items.where('created_at < ? and returned = ?', DateTime.now-2.days, false).present?) %>
+
+      <% else %>
+
+        <%= link_to "Borrow item", order_stationary_url(item) %>
+
+      <% end %>
+
   <% else %>
   <%= link_to "Use item", order_stationary_url(item) %>
   <% end %>

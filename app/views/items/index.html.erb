@@ -7,4 +7,18 @@
   <%= render @items %>
 </ul>
 
+<!-- if there are no user items after the expiry date or if there are items after expiry date and items are returned then user can rent -->
+<!-- else if user items are -->
+
+
+<% if(@all_user_items.where('created_at < ? and returned = ?', DateTime.now-2.days, false).present?) %>
+cannot rent
+<% else %>
+can rent
+<% end %>
+
+<% @all_user_items.where('created_at < ? and returned = ?', DateTime.now-2.days, false).each do |item| %>
+<%= item.item_id %>
+<% end %>
+
 <%= will_paginate %>

@@ -1,12 +1,15 @@
 class ItemsController < ApplicationController
 
   before_action :item_not_available, only: [:order]
+  before_action :fined, only: [:order]
 
   def index 
   	@items = Item.paginate(page: params[:page])
 
     @user_items = current_user.user_items.pluck(:id).uniq
     @all_user_items = UserItem.where(id: @user_items)
+
+    @user_item = UserItem.all
   end
 
   def new
@@ -23,6 +26,22 @@ class ItemsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def fined 
+    @item = Item.find(params[:id])
+    @user_items = current_user.user_items.pluck(:id).uniq
+    @all_user_items = UserItem.where(id: @user_items)
+
+    if(@item.borrowable?)
+     if(@all_user_items.where('created_at < ? and returned = ?', DateTime.now-2.days, false).present?)
+      flash[:danger] = "Item cannot be borrowed, you currently have a fine"
+      redirect_to items_path
+     else
+
+     end
+   else
+   end
   end
 
   def order 
