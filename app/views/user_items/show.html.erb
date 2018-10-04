@@ -14,51 +14,63 @@
          	<h4>User who ordered this:</h4>
          	<%= @user_item.user.name %>
 
-         	<h4>Item quantity:</h4>
-         	<%= @user_item.item.item_quantity %>
-
          	<h4>Will this item be returned?</h4>
 
          	<% if @user_item.item.borrowable? %>
-         	This item was borrowed and will be returned
+         	  This item was borrowed and will be returned
+
+         	  <br><br>
+
+         	  <% if @user_item.user.id == current_user.id && @user_item.returned == false && @user_item.fine == 0 %>
+
+              <%= link_to 'Return',  returning_user_item_path(@user_item), method: :put, data: { confirm: 'Are you sure?' } %>
+
+            <% end %>
+
+            <% if @user_item.user.id == current_user.id && @user_item.returned == false && @user_item.fine > 0 %>
+
+              <%= link_to 'Return and pay fine',  returning_user_item_path(@user_item), method: :put, data: { confirm: 'Are you sure?' } %>
+
+         	  <% end %>
+
+         	  <% if @user_item.returned == true %>
+
+         	    This item was returned
+
+         	<% end %>
+
+         	  <% else %>
+
+         	    This item was taken and will not be returned
+         	
+            <% end %>
 
          	<br><br>
 
-         	<% if @user_item.user.id == current_user.id && @user_item.returned == false %>
-
-         	<%= link_to 'Return',  returning_user_item_path(@user_item), method: :put, data: { confirm: 'Are you sure?' } %>
-
-
-         	<% end %>
-
-         	<% if @user_item.returned == true %>
-
-         	This item was returned
-
-         	<% end %>
-
-         	<% else %>
-         	This item was taken and will not be returned
-         	<% end %>
-
-         	<br><br>
 
          <% if @user_item.item.borrowable? %>
 
-
          <!-- if the created at date (02/10/18) is less than the date today (e.g. 03/10/18 -2 = 01/10/18) then item is overdue -->
 
-         Status:
-         <%= if (@user_item.created_at < Date.today-2.days && @user_item.returned == false)
-            "Overdue - you need to return the item!"
-          else
-            "Within return time"
-           end %>
-         </p>
+           Status:
+           <% if (@user_item.created_at < Date.today-2.days) %>
+              Overdue
+           <% else %>
+              Within return time
+           <% end %>
+           </p>
 
          <p>
-           Fine:
-           <%= number_to_currency(@user_item.fine, {unit: '£', precision: 2 }) %>
+
+          <% if(@user_item.fine > 0 && @user_item.returned == true) %>
+            Fine:
+            <%= number_to_currency(@user_item.fine, {unit: '£', precision: 2 }) %>
+            (This fine was paid)
+          <% else %>
+            Fine:
+            <%= number_to_currency(@user_item.fine, {unit: '£', precision: 2 }) %>
+          <% end %>
+         
          </p>
 
          <% else %>

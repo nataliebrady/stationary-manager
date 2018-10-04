@@ -5,6 +5,7 @@
 
 <ul class="users">
 <% if current_user.admin == false %>
+
   <%= render @all_user_items %>
 <% else %>
   <%= render @user_items %>

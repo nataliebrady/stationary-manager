@@ -22,8 +22,13 @@
   <%= item.hidden_field :user_id, value: current_user.id %>
 <% end %>
 
+<br>
 
-  <br>
+<% if(@item.borrowable?) %>
+You are about to borrow 1 <%= @item.name %>
+<% end %>
+
+  <br><br>
 
   <%= submit_tag("Submit order", :class => "btn-submit") %>
 
