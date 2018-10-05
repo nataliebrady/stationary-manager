@@ -1,9 +1,6 @@
 <% provide(:title, @item.name) %>
-<div class="row mainpage-container">
-  <div class="col-md-12">
-      
-<%= form_tag(user_items_path, method: "POST") do %>
 
+<%= form_tag(user_items_path, method: "POST") do %>
 
   <h4>Product code:</h4>
   <p><%= @item.id %></p>
@@ -12,7 +9,11 @@
   <p><%= @item.name %></p>
 
   <h4>Can this item be borrowed?</h4>
-  <p><%= @item.borrowable %></p>
+  <% if @item.borrowable? %>
+    <p>Yes</p>
+  <% else %>
+    <p>No</p>
+  <% end %>
 
   <h4>Item quantity</h4>
   <p><%= @item.item_quantity %></p>
@@ -25,14 +26,11 @@
 <br>
 
 <% if(@item.borrowable?) %>
-You are about to borrow 1 <%= @item.name %>
+  You are about to borrow 1 <%= @item.name %><br><br>
+  <%= submit_tag("Borrow item", :class => "btn btn-login") %>
+<% else %>
+  You are about to use 1 <%= @item.name %><br><br>
+  <%= submit_tag("Use item", :class => "btn btn-login") %>
 <% end %>
 
-  <br><br>
-
-  <%= submit_tag("Submit order", :class => "btn-submit") %>
-
 <% end %> 
-
-  </div>
-</div>

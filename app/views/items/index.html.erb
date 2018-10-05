@@ -1,24 +1,62 @@
 <% provide(:title, 'All stationary') %>
-<h1>All stationary</h1>
+<h2>All stationary</h2><br>
 
-<%= will_paginate %>
+<div class="page-container">
 
-<ul class="users">
-  <%= render @items %>
-</ul>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Product code</th>
+      <th>Item name</th>
+      <th>Item quantity</th>
+      <th>Cupboard item is stored in</th>
+      <th>Borrow/use</th>
+      <th>Other actions</th>
+    </tr>
+  </thead>
 
-<!-- if there are no user items after the expiry date or if there are items after expiry date and items are returned then user can rent -->
-<!-- else if user items are -->
+  <tbody>
 
+<% @items.each do |item| %>
 
-<% if(@all_user_items.where('created_at < ? and returned = ?', DateTime.now-2.days, false).present?) %>
-cannot rent
+<tr>
+
+  <td><%= item.id %></td>
+  <td><%= link_to item.name, item %></td>
+  <td><%= item.item_quantity %></td>
+  <td><%= link_to item.cupboard.name %></td>
+
+<% if item.item_quantity == 0 %>
+
 <% else %>
-can rent
+
+  <% if item.borrowable?  %>
+
+    <% if(@all_user_items.where('created_at < ? and returned = ?', DateTime.now-2.days, false).present?) %>
+
+      <% else %>
+
+        <td><%= link_to "Borrow item", order_stationary_url(item) %></td>
+
+      <% end %>
+
+  <% else %>
+  <td><%= link_to "Use item", order_stationary_url(item) %></td>
+  <% end %>
+  
 <% end %>
 
-<% @all_user_items.where('created_at < ? and returned = ?', DateTime.now-2.days, false).each do |item| %>
-<%= item.item_id %>
+  <% if current_user.admin? && !current_user?(@user) %>
+    <td><%= link_to "edit", edit_item_path(item), class: 'btn btn-login btn-action' %> <%= link_to "delete", item, class: 'btn btn-login btn-action', method: :delete,
+                                  data: { confirm: "You sure?" } %></td>
+  <% end %>
+</div>
+
+</tr>
+  
 <% end %>
 
-<%= will_paginate %>
+</tbody>
+</table>
+
+</div>

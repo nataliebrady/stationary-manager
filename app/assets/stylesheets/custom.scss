@@ -1,2 +1,239 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+/* main layout */
+
+body {
+	background-color: #3a3939 !important;
+	font-family: 'Lato', sans-serif !important;
+	color:#fff !important;
+}
+
+.main-container {
+	position:relative;
+	width:70%;
+	left:50%;
+	transform:translateX(-50%);
+	a {
+		color:#fff !important;
+	}
+	a:hover, a:focus, a:active {
+		background:none;
+	}
+	input, textarea, select {
+		color:#000;
+	}
+}
+
+.layout-container {
+	margin-top:130px;
+}
+
+#error_explanation li {
+	color:#000;
+}
+
+.alert-danger {
+
+}
+
+/* navbar */
+
+.navbar {
+	font-family: 'Lato', sans-serif !important;
+	a {
+	color:#fff !important;
+	}
+}
+
+.navbar-right {
+	position:relative;
+}
+
+.navbar-nav > li > a {
+	padding-top:25px;
+	padding-bottom:25px;
+	font-size:14px;
+	font-weight:700;
+	transition: color .5s;
+}
+
+.navbar-nav > li > a:hover, .navbar-nav > li > a:focus, .navbar-nav > li > a:active {
+	color: #f2852f !important;
+}
+
+.navbar-nav > li > .dropdown-menu {
+	background-color:#090909;
+}
+
+#logo {
+	display:inline-block;
+	padding-top:25px;
+	font-size:25px;
+	font-weight:900;
+}
+
+#logo:hover, #logo:active, #logo:focus {
+	background:none;
+	color:#fff;
+	text-decoration:none;
+}
+
+.dropdown-menu > li > a {
+	font-weight:700;
+	transition: color .5s;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+	background:none !important;
+	color: #f2852f !important;
+}
+
+/* homepage */
+
+.home-container {
+	margin-top:280px;
+}
+
+h1 {
+	font-size:60px;
+	width:700px;
+	max-width:100%;
+	line-height:55px;
+	text-transform:uppercase;
+	font-weight:900;
+}
+
+.btn-signup {
+	margin-top:10px;
+	background-color:#f2852f;
+	color:#fff !important;
+	padding-left:30px;
+	padding-right:30px;
+	padding-top:15px;
+	padding-bottom:15px;
+	border:0px;
+	font-weight:700;
+	max-width:100%;
+	font-size:17px;
+	transition: background-color .5s;
+}
+
+.btn-signup:hover, .btn-signup:focus, .btn-signup:active {
+	background-color: #d6752f;
+}
+
+.btn-primary:active:hover, .btn-primary:active:focus, .btn-primary:active.focus, .btn-primary.active:hover, .btn-primary.active:focus, .btn-primary.active.focus, .open > .btn-primary.dropdown-toggle:hover, .open > .btn-primary.dropdown-toggle:focus, .open > .btn-primary.dropdown-toggle.focus {
+	background-color: #d6752f;
+}
+
+/* other pages */
+
+.form-container {
+	width:50%;
+	max-width:100%;
+	a {
+		color:#fff !important;
+		&:hover, &:focus, &:active {
+			background:none;
+		}
+	}
+}
+
+.btn-login {
+	background-color:#f2852f;
+	color:#fff !important;
+	padding-left:50px;
+	padding-right:50px;
+	padding-top:10px;
+	padding-bottom:10px;
+	border:0px;
+	font-weight:700;
+	font-size:17px;
+	transition: background-color .5s;
+}
+
+.btn-login:hover, .btn-login:focus, .btn-login:active {
+	background-color: #d6752f !important;
+}
+
+h2 {
+	font-size:50px;
+	width:700px;
+	max-width:100%;
+	line-height:55px;
+	text-transform:uppercase;
+	font-weight:900;
+}
+
+.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
+	margin-left:0px;
+	position:relative;
+}
+
+.index-list {
+	padding:0px;
+	list-style:none;
+}
+
+#new_cupboard input, select {
+	width:100%;
+}
+
+#new_cupboard .btn-login {
+	width:auto;
+}
+
+.nested-fields {
+	padding-left:20px;
+	padding-bottom:40px;
+}
+
+h5 {
+	font-size:17px;
+	font-weight:700;
+}
+
+.page-container a {
+	font-size:15px;
+}
+
+.page-container p {
+	font-size: 15px;
+}
+
+.action-links {
+	float:right;
+}
+
+.cupboard {
+	margin-bottom:15px;
+}
+
+.btn-action {
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+td, tr, table {
+	border:none !important;
+	border-collapse: collapse !important;
+}
+
+th {
+	font-size: 15px;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+	background-color:#090909;
+	border: 1px solid #090909;
+}
+
+.nav-tabs {
+	border-bottom: 1px solid #090909;
+}
+
+.nav-tabs > li > a:hover, .nav-tabs > li > a:focus, .nav-tabs > li > a:active {
+	background-color:#090909;
+	border: 1px solid #090909;
+}

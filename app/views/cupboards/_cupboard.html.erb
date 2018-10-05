@@ -1,7 +1,0 @@
-<li>
-  <%= link_to cupboard.name, cupboard %>
-  <% if current_user.admin? && !current_user?(@user) %>
-    | <%= link_to "edit", edit_cupboard_path(cupboard) %> | <%= link_to "delete", cupboard, method: :delete,
-                                  data: { confirm: "You sure?" } %>
-  <% end %>
-</li>

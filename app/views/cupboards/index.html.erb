@@ -1,10 +1,39 @@
 <% provide(:title, 'All cupboards') %>
-<h1>All cupboards</h1>
+<h2>All cupboards</h2><br>
 
-<%= will_paginate %>
+<div class="page-container">
 
-<ul class="users">
-  <%= render @cupboards %>
-</ul>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Cupboard name</th>
+      <th>Number of items in cupboard</th>
+      <th>Other actions</th>
+    </tr>
+  </thead>
 
-<%= will_paginate %>
+  <tbody>
+
+<% @cupboards.each do |cupboard| %>
+
+<tr>
+
+  <td><%= link_to cupboard.name, cupboard %></td>
+  <td><%= cupboard.items.count %>
+
+
+  <% if current_user.admin? && !current_user?(@user) %>
+    <td><%= link_to "Edit", edit_cupboard_path(cupboard), class: 'btn btn-login btn-action' %> <%= link_to "Delete", cupboard, class: 'btn btn-login btn-action', method: :delete,
+                                  data: { confirm: "You sure?" } %></td>
+  <% end %>
+
+</div>
+
+</tr>
+  
+<% end %>
+
+</tbody>
+</table>
+
+</div>

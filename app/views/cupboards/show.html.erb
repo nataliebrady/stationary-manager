@@ -1,17 +1,19 @@
 <% provide(:title, @cupboard.name) %>
-<div class="row">
-  <aside class="col-md-4">
-      <h1>
-      	<br><br>
-        <%= @cupboard.name %><br><br>
 
-         <% @cupboard.items.each do |item| %>
-         	<h5>Product code:</h5>
-         	<%= link_to item.id, item_url(item) %> 
-         	<h5>Product name:</h5>
-         	<%= link_to item.name, item_url(item) %><br>
-         	<br><br>
-         <% end %>
-      </h1>
-  </aside>
+<div class="page-container">
+
+<h2>
+  <%= @cupboard.name %><br>
+<h2>
+
+<% @cupboard.items.each do |item| %>
+  <h5>Product code:</h5>
+  <%= link_to item.id, item_url(item) %>
+
+  <h5>Product name:</h5>
+  <%= link_to item.name, item_url(item) %><br>
+  
+  <br><br>
+<% end %>
+
 </div>

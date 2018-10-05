@@ -1,14 +1,12 @@
 <% provide(:title, @item.name) %>
-<div class="row">
-  <aside class="col-md-4">
-      <h1>
-      	<br><br>
+
+<div class="page-container">
 
         <h3>Product code:</h3>
-        <%= @item.id %>
+        <p><%= @item.id %></p>
 
       	<h3>Item name:</h3>
-        <%= @item.name %>
+        <p><%= @item.name %></p>
 
         <h3>Cupboard where it's stored:</h3>
         <%= link_to @item.cupboard.name, cupboard_url(@item.cupboard) %>
@@ -19,12 +17,12 @@
         <h3>Can this item be borrowed?</h3>
 
         <% if @item.borrowable? %>
-        Yes
+        <p>Yes</p>
         <% else %>
-        No
+        <p>No</p>
         <% end %>
 
-        <br><br>
+        <br>
 
 
         <% if @item.item_quantity == 0 %>
@@ -32,13 +30,11 @@
         <% else %>
 
           <% if @item.borrowable? %>
-            <%= link_to "Borrow item", order_stationary_url(@item) %>
+            <%= link_to "Borrow item", order_stationary_url(@item), class: 'btn btn-login' %>
           <% else %>
-            <%= link_to "Use item", order_stationary_url(@item) %>
+            <%= link_to "Use item", order_stationary_url(@item), class: 'btn btn-login'%>
           <% end %>
   
         <% end %>
 
-      </h1>
-  </aside>
 </div>

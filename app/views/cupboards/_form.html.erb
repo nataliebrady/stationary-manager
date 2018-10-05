@@ -1,18 +1,19 @@
 <%= form_for(@cupboard) do |f| %>
 <%= render 'error_messages', object: @cupboard %>
 
-    <%= f.label "Cupboard name" %>
-    <%= f.text_area :name %>
-    <div id='items'>
-      <div class="panel-group" id="accordion">
+    <p>Cupboard name:</p>
+    <%= f.text_field :name %><br><br>
+
       <%= f.fields_for :items do |item| %>
         <%= render 'item_fields', :f => item %>
       <% end %>
+
       <div class='links add-items'>
-        <%= link_to_add_association 'Add Item', f, :items %>
-        <%= f.submit :submit, class: "btn-submit" %>
+        <%= link_to_add_association 'Add an item', f, :items %>
+
+        <br><br>
+
+        <%= f.submit :submit, class: "btn btn-login" %>
       </div>
-    </div>
-    </div>
 
   <% end %>

@@ -1,18 +1,30 @@
+<div class="form-container">
+
 <%= form_for(@item) do |f| %>
 <%= render 'error_messages', object: @item %>
 
   <%= f.label :name %>
   <%= f.text_field :name, class: 'form-control' %>
 
-  <%= f.label :cupboard %><br />
+  <br>
+
+  <%= f.label :cupboard %>
   <%= f.collection_select :cupboard_id, @cupboards, :id, :name, :prompt => "Select a cupboard" %>
 
-  <%= f.label :borrowable, "Can this item be borrowed?" %><br />
+  <br><br>
+
+  <%= f.label :borrowable, "Can this item be borrowed?" %>
   <%= f.select :borrowable, options_for_select([ ['No', false], ['Yes', true]]) %>
 
-  <%= f.label :item_quantity, "How many of these items are there?" %><br />
+  <br><br>
+
+  <%= f.label :item_quantity, "How many of these items are there?" %>
   <%= f.select :item_quantity, options_for_select(0..50), { prompt: "Select a quantity" } %>
 
-  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  <br><br>
+
+  <%= f.submit yield(:button_text), class: "btn btn-login" %>
 
 <% end %>
+
+</div>

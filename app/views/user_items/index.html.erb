@@ -1,24 +1,50 @@
 <% provide(:title, 'Order history list') %>
-<h1>Order history</h1>
+<h2>Order history</h2><br>
 
 <%= will_paginate %>
 
 <br>
 
 <ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+  <li class="active"><a data-toggle="tab" href="#home">All</a></li>
   <li><a data-toggle="tab" href="#menu1">All used items</a></li>
   <li><a data-toggle="tab" href="#menu2">All borrowed items</a></li>
   <li><a data-toggle="tab" href="#menu3">All borrowed items returned</a></li>
   <li><a data-toggle="tab" href="#menu4">All borrowed items not returned</a></li>
 </ul>
 
+<br>
+
 <div class="tab-content">
   <div id="home" class="tab-pane fade in active">
     <% if current_user.admin == false %>
-  		<%= render @all_user_items %>
+
+  		 <% @all_user_items.each do |item| %>
+  		 	<%= link_to item.item.name, item %>
+
+  		 	<div class="action-links">
+  		 	<%= link_to "delete", item, class: 'btn btn-login btn-action', method: :delete,
+                                  data: { confirm: "You sure?" } %>
+            </div>
+
+            <br><br><br>
+
+  		 <% end %>
+
 	<% else %>
-  		<%= render @user_items %>
+  		
+  		 <% @user_items.each do |item| %>
+  		 	<%= link_to item.item.name, item %>
+
+  		 	<div class="action-links">
+  		 	<%= link_to "delete", item, class: 'btn btn-login btn-action', method: :delete,
+                                  data: { confirm: "You sure?" } %>
+            </div>
+
+            <br><br><br>
+
+  		 <% end %>
+
 	<% end %>
   </div>
   <div id="menu1" class="tab-pane fade">
@@ -26,7 +52,15 @@
  		<% @all_user_items.returned.each do |item| %>
 
 	 		<% if item.item.borrowable == false %>
-	 		<%= link_to item.item.name, item %><br>
+	 		<%= link_to item.item.name, item %>
+
+	 		<div class="action-links">
+  		 	<%= link_to "delete", item, class: 'btn btn-login btn-action', method: :delete,
+                                  data: { confirm: "You sure?" } %>
+            </div>
+
+            <br><br><br>
+
 	 		<% end %>
 
  		<% end %>
@@ -35,7 +69,15 @@
  		<% @user_items.returned.each do |item| %>
 
 	 		<% if item.item.borrowable == false %>
-	 		<%= link_to item.item.name, item %><br>
+	 		<%= link_to item.item.name, item %>
+
+	 		<div class="action-links">
+  		 	<%= link_to "delete", item, class: 'btn btn-login btn-action', method: :delete,
+                                  data: { confirm: "You sure?" } %>
+            </div>
+
+            <br><br><br>
+
 	 		<% end %>
 
  		<% end %>
@@ -46,7 +88,15 @@
  		<% @all_user_items.each do |item| %>
 
 	 		<% if item.item.borrowable == true %>
-	 		<%= link_to item.item.name, item %><br>
+	 		<%= link_to item.item.name, item %>
+
+	 		<div class="action-links">
+  		 	<%= link_to "delete", item, class: 'btn btn-login btn-action', method: :delete,
+                                  data: { confirm: "You sure?" } %>
+            </div>
+
+            <br><br><br>
+
 	 		<% end %>
 
  		<% end %>
@@ -55,7 +105,15 @@
  		<% @user_items.each do |item| %>
 
 	 		<% if item.item.borrowable == true %>
-	 		<%= link_to item.item.name, item %><br>
+	 		<%= link_to item.item.name, item %>
+
+  		 	<div class="action-links">
+  		 	<%= link_to "delete", item, class: 'btn btn-login btn-action', method: :delete,
+                                  data: { confirm: "You sure?" } %>
+            </div>
+
+            <br><br><br>
+
 	 		<% end %>
 
  		<% end %>
@@ -66,7 +124,15 @@
  		<% @all_user_items.returned.each do |item| %>
 
 	 		<% if item.item.borrowable == true %>
-	 		<%= link_to item.item.name, item %><br>
+	 		<%= link_to item.item.name, item %>
+
+	 		<div class="action-links">
+  		 	<%= link_to "delete", item, class: 'btn btn-login btn-action', method: :delete,
+                                  data: { confirm: "You sure?" } %>
+            </div>
+
+            <br><br><br>
+
 	 		<% end %>
 
  		<% end %>
@@ -75,7 +141,15 @@
  		<% @user_items.returned.each do |item| %>
 
 	 		<% if item.item.borrowable == true %>
-	 		<%= link_to item.item.name, item %><br>
+	 		<%= link_to item.item.name, item %>
+
+	 		<div class="action-links">
+  		 	<%= link_to "delete", item, class: 'btn btn-login btn-action', method: :delete,
+                                  data: { confirm: "You sure?" } %>
+            </div>
+
+            <br><br><br>
+
 	 		<% end %>
 
  		<% end %>
@@ -86,7 +160,15 @@
  		<% @all_user_items.not_returned.each do |item| %>
 
 	 		<% if item.item.borrowable == true %>
-	 		<%= link_to item.item.name, item %><br>
+	 		<%= link_to item.item.name, item %>
+
+	 		<div class="action-links">
+  		 	<%= link_to "delete", item, class: 'btn btn-login btn-action', method: :delete,
+                                  data: { confirm: "You sure?" } %>
+            </div>
+
+            <br><br><br>
+
 	 		<% end %>
 
  		<% end %>
@@ -95,7 +177,15 @@
  		<% @user_items.not_returned.each do |item| %>
 
 	 		<% if item.item.borrowable == true %>
-	 		<%= link_to item.item.name, item %><br>
+	 		<%= link_to item.item.name, item %>
+
+	 		<div class="action-links">
+  		 	<%= link_to "delete", item, class: 'btn btn-login btn-action', method: :delete,
+                                  data: { confirm: "You sure?" } %>
+            </div>
+
+            <br><br><br>
+
 	 		<% end %>
 
  		<% end %>
