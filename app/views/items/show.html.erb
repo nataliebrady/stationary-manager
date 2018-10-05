@@ -2,19 +2,19 @@
 
 <div class="page-container">
 
-        <h3>Product code:</h3>
+        <h5>Product code:</h5>
         <p><%= @item.id %></p>
 
-      	<h3>Item name:</h3>
+      	<h5>Item name:</h5>
         <p><%= @item.name %></p>
 
-        <h3>Cupboard where it's stored:</h3>
+        <h5>Cupboard where it's stored:</h5>
         <%= link_to @item.cupboard.name, cupboard_url(@item.cupboard) %>
 
-        <h3>Item quantity:</h3>
-        <%= @item.item_quantity %>
+        <h5>Item quantity:</h5>
+        <p><%= @item.item_quantity %></p>
 
-        <h3>Can this item be borrowed?</h3>
+        <h5>Can this item be borrowed?</h5>
 
         <% if @item.borrowable? %>
         <p>Yes</p>
@@ -23,7 +23,6 @@
         <% end %>
 
         <br>
-
 
         <% if @item.item_quantity == 0 %>
 
