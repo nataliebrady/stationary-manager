@@ -1,9 +1,16 @@
 <% provide(:title, 'Order history list') %>
+
+<% if current_user.admin? && !current_user?(@user) %>
 <h2>Order history</h2><br>
+<% else %>
+<h2>Your order history</h2><br>
+<% end %>
 
 <%= will_paginate %>
 
 <br>
+
+<!-- displaying the orders with different filters, for example - all orders not returned, all orders returned etc. -->
 
 <ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#home">All</a></li>
@@ -22,10 +29,12 @@
   		 <% @all_user_items.each do |item| %>
   		 	<%= link_to item.item.name, item %>
 
+  		 	<% if current_user.admin? && !current_user?(@user) %>
   		 	<div class="action-links">
   		 	<%= link_to "delete", item, class: 'btn btn-login btn-action', method: :delete,
                                   data: { confirm: "You sure?" } %>
             </div>
+            <% end %>
 
             <br><br><br>
 
@@ -36,10 +45,12 @@
   		 <% @user_items.each do |item| %>
   		 	<%= link_to item.item.name, item %>
 
+  		 	<% if current_user.admin? && !current_user?(@user) %>
   		 	<div class="action-links">
   		 	<%= link_to "delete", item, class: 'btn btn-login btn-action', method: :delete,
                                   data: { confirm: "You sure?" } %>
             </div>
+            <% end %>
 
             <br><br><br>
 
@@ -54,10 +65,12 @@
 	 		<% if item.item.borrowable == false %>
 	 		<%= link_to item.item.name, item %>
 
+	 		<% if current_user.admin? && !current_user?(@user) %>
 	 		<div class="action-links">
   		 	<%= link_to "delete", item, class: 'btn btn-login btn-action', method: :delete,
                                   data: { confirm: "You sure?" } %>
             </div>
+            <% end %>
 
             <br><br><br>
 
@@ -71,10 +84,12 @@
 	 		<% if item.item.borrowable == false %>
 	 		<%= link_to item.item.name, item %>
 
+			<% if current_user.admin? && !current_user?(@user) %>
 	 		<div class="action-links">
   		 	<%= link_to "delete", item, class: 'btn btn-login btn-action', method: :delete,
                                   data: { confirm: "You sure?" } %>
             </div>
+            <% end %>
 
             <br><br><br>
 
@@ -90,10 +105,12 @@
 	 		<% if item.item.borrowable == true %>
 	 		<%= link_to item.item.name, item %>
 
+			<% if current_user.admin? && !current_user?(@user) %>
 	 		<div class="action-links">
   		 	<%= link_to "delete", item, class: 'btn btn-login btn-action', method: :delete,
                                   data: { confirm: "You sure?" } %>
             </div>
+            <% end %>
 
             <br><br><br>
 
@@ -107,10 +124,12 @@
 	 		<% if item.item.borrowable == true %>
 	 		<%= link_to item.item.name, item %>
 
+	 		<% if current_user.admin? && !current_user?(@user) %>
   		 	<div class="action-links">
   		 	<%= link_to "delete", item, class: 'btn btn-login btn-action', method: :delete,
                                   data: { confirm: "You sure?" } %>
             </div>
+            <% end %>
 
             <br><br><br>
 
@@ -126,10 +145,12 @@
 	 		<% if item.item.borrowable == true %>
 	 		<%= link_to item.item.name, item %>
 
+	 		<% if current_user.admin? && !current_user?(@user) %>
 	 		<div class="action-links">
   		 	<%= link_to "delete", item, class: 'btn btn-login btn-action', method: :delete,
                                   data: { confirm: "You sure?" } %>
             </div>
+            <% end %>
 
             <br><br><br>
 
@@ -143,10 +164,12 @@
 	 		<% if item.item.borrowable == true %>
 	 		<%= link_to item.item.name, item %>
 
+	 		<% if current_user.admin? && !current_user?(@user) %>
 	 		<div class="action-links">
   		 	<%= link_to "delete", item, class: 'btn btn-login btn-action', method: :delete,
                                   data: { confirm: "You sure?" } %>
             </div>
+            <% end %>
 
             <br><br><br>
 
@@ -162,10 +185,12 @@
 	 		<% if item.item.borrowable == true %>
 	 		<%= link_to item.item.name, item %>
 
+	 		<% if current_user.admin? && !current_user?(@user) %>
 	 		<div class="action-links">
   		 	<%= link_to "delete", item, class: 'btn btn-login btn-action', method: :delete,
                                   data: { confirm: "You sure?" } %>
             </div>
+            <% end %>
 
             <br><br><br>
 
@@ -179,10 +204,12 @@
 	 		<% if item.item.borrowable == true %>
 	 		<%= link_to item.item.name, item %>
 
+	 		<% if current_user.admin? && !current_user?(@user) %>
 	 		<div class="action-links">
   		 	<%= link_to "delete", item, class: 'btn btn-login btn-action', method: :delete,
                                   data: { confirm: "You sure?" } %>
             </div>
+            <% end %>
 
             <br><br><br>
 

@@ -1,19 +1,53 @@
 <div class="page-container">
 
-<h2>Help</h2><br>
+<h2>Help</h2>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>
+<h3>Sign up</h3>
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>To sign up to the app you can click on the button on the homepage which will take you to a form where you will have to input your name, e-mail address and password. Alternatively you can use <%= link_to "this", signup_path, class: "paragraph-link" %> link which will take you to the sign up page.</p>
+
+<h3>Logging in</h3>
+
+<p>After you have successfully signed up you can then log in with the details used when you signed up. Once you have successfully logged into the app you will be taken to your profile.</p>
+
+<h3>Profile page</h3>
+
+<p>The profile page contains your name and a space for a profile picture of your choice. Underneath this information will be three headers: items borrowed and not returned, items borrowed and returned and items used. When you start borrowing and using items this area will populate letting you know what items you have used and borrowed and which ones have been returned and haven't been returned. When this area populates you will then be able to click on each item to see the order history for that item such as whether there is a fine on it etc.</p>
+
+<h3>Settings</h3>
+
+<p>You can reach the settings via the Account dropdown on the navigation bar. Once you have successfully reached this page you will see a form where you can edit your own information and upload a profile picture of choice.</p>
+
+<h3>Users</h3>
+
+<p>The users page will contain a list of all the users currently signed up to the app, if you click on a user you will be able to see what items they are currently borrowing, have returned and have used. If you are an admin user you can click on the items on other peoples profiles and see their order history as well as being able to delete and edit the user.</p>
+
+<h3>All stationary</h3>
+
+<p>If you click on the Stationary dropdown on the navigation bar you will see an 'All stationary' link. On this page you will be able to see all the stationary along with all the relevant information you need such as the product code, item name, item quantity, cupboard where the item is stored, links to borrowing/using an item - if the item isn't in stock these links will be replaced with 'Out of stock' and if you have a fine from not returning a previous item the links will be replaced with 'You cannot borrow an item'. If you are an admin, you will be able to see other actions where you can edit the item or delete the item.</p>
+
+<h3>New stationary (admin users only)</h3>
+
+<p>If you are an admin user you will be able to see an extra link on the Stationary dropdown called 'New stationary'. If you click on this link you will be taken to a form where you can create a new item - you can fill in the name of the item, the cupboard it will be stored in, whether it can be borrowed or used and how many there are of the item.</p>
+
+<h3>All cupboards</h3>
+
+<p>If you click on the Cupboard dropdown on the navigation bar you will see an 'All cupboards' link. On this page you will be able to see all the cupboards along with all the relevant information you need such as the name of the cupboard and how many items there are in the cupboard. If you are an admin user you will be able to see other actions where you can edit the cupboard or delete the cupboard.</p>
+
+<h3>New cupboards (admin users only)</h3>
+
+<p>If you are an admin user you will be able to see an extra link on the Cupboards dropdown called 'New cupboard'. If you click on this link you will be taken to a form where you can create a new cupboard and create new items to go into the cupboard. You can fill in the name of the cupboard and then fill in information about items to go into the cupboard (you can add as many items as you like to go into the cupboard, or you can remove items if you didn't mean to put it there).</p>
+
+<h3>Order history</h3>
+
+<p>The order history page contains all of the items you have either used or borrowed (or are currently borrowing). An admin user will be able to delete these orders if they wish. If you click on the item name you will be able to see the order history for this item such as the name of the item, who created this order, the product code, whether it was borrowed or used, whether it has been returned, the order date (if returned, the returned date also), the status of the item (e.g. whether it's overdue or not) and whether there was a fine.</p>
+
+<h3>Borrowing/using items</h3>
+
+<p>If you would like to borrow/use an item you can go to the 'All stationary' page and click on the 'borrow' or 'use' link depending on whether it can be borrowed or used. This will take you to an order page where you can confirm the information before submitting. Once submitting, this order will then appear on the Order History page and your profile. Remember if you borrowed the item, you must bring it back within 2 days of borrowing otherwise a £1.00 fine will be added for everyday after the expected return date.</p>
+
+<h3>Returning an item</h3>
+
+<p>To return an item, you can go to your profile, click on the item you want to return and click 'return', if there was a fine, this will also pay your fine off.</p>
 
 </div>

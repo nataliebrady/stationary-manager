@@ -8,7 +8,9 @@
     <tr>
       <th>Cupboard name</th>
       <th>Number of items in cupboard</th>
+      <% if current_user.admin? && !current_user?(@user) %>
       <th>Other actions</th>
+      <% end %>
     </tr>
   </thead>
 

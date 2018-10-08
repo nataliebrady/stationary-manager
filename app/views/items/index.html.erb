@@ -3,6 +3,8 @@
 
 <div class="page-container">
 
+<!-- display all items with information such as product code, cupboard it belongs in and a link to borrow/use the item (if in stock and user doesn't have a fine) -->
+
 <table class="table">
   <thead>
     <tr>
@@ -11,7 +13,9 @@
       <th>Item quantity</th>
       <th>Cupboard item is stored in</th>
       <th>Borrow/use</th>
+      <% if current_user.admin? && !current_user?(@user) %>
       <th>Other actions</th>
+      <% end %>
     </tr>
   </thead>
 
@@ -28,11 +32,15 @@
 
 <% if item.item_quantity == 0 %>
 
+<td><p>None in stock</p></td>
+
 <% else %>
 
   <% if item.borrowable?  %>
 
     <% if(@all_user_items.where('created_at < ? and returned = ?', DateTime.now-2.days, false).present?) %>
+
+    <td><p>You cannot borrow an item</p></td>
 
       <% else %>
 

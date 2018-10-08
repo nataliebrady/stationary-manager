@@ -21,7 +21,11 @@
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to "All cupboards", cupboards_path %></li>
+
+              <% if current_user.admin? %>
               <li><%= link_to "New cupboard", new_cupboard_url %></li>
+              <% end %>
+
             </ul>
           </li>
           <li class="dropdown">
@@ -30,7 +34,11 @@
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to "All stationary", items_path %></li>
+
+              <% if current_user.admin? %>
               <li><%= link_to "New stationary", new_stationary_url %></li>
+              <% end %>
+
             </ul>
           </li>
           <li><%= link_to "Users", users_path %></li>

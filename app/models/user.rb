@@ -8,6 +8,7 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  # a user has many orders, if the user is destroyed, destroy the orders associated with that user
   has_many :user_items, dependent: :destroy
 
   # Returns the hash digest of the given string.

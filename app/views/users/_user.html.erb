@@ -2,8 +2,10 @@
   <%= gravatar_for user, size: 50 %>
   <%= link_to user.name, user %>
   <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to "edit", edit_user_path(user) %> | <%= link_to "delete", user, method: :delete,
+  <div class="action-links">
+    <%= link_to "edit", edit_user_path(user), class: 'btn btn-login btn-action' %> <%= link_to "delete", user, class: 'btn btn-login btn-action', method: :delete,
                                   data: { confirm: "You sure?" } %>
+  </div>
   <% end %>
 </li>
 

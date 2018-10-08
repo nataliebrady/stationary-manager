@@ -237,3 +237,44 @@ th {
 	background-color:#090909;
 	border: 1px solid #090909;
 }
+
+.btn.btn-login.btn-action {
+	margin-top:5px;
+}
+
+.paragraph-link {
+	text-decoration:underline;
+}
+
+@media screen and (max-width:1200px) {
+	.main-container {
+		width:95%;
+	}
+	.navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
+		max-height:initial;
+	}
+}
+
+@media screen and (max-width:991px) {
+	.form-container {
+		width:100%;
+	}
+}
+
+@media screen and (max-width:767px) {
+	#logo {
+		padding-top:16px;
+	}
+	h1 {
+		font-size:45px;
+		line-height:45px;
+		width:100%;
+	}
+}
+
+@media screen and (max-width:480px) {
+	h1 {
+		font-size: 35px;
+		line-height:35px;
+	}
+}

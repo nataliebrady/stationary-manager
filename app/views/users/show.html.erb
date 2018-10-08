@@ -4,7 +4,9 @@
         <%= @user.name %>
       </h2>
 
-      <h4>Items I have borrowed and not returned yet</h4>
+      <!-- displaying the users orders - items returned and not returned and items used -->
+
+      <h4>Items borrowed and not returned yet</h4>
 
       <% @user_items_all.not_returned.each do |item| %>
 
@@ -20,7 +22,7 @@
 
       <% end %>
 
-      <h4>Items I have borrowed and returned</h4>
+      <h4>Items borrowed and returned</h4>
 
       <% @user_items_all.returned.each do |item| %>
 
@@ -29,14 +31,14 @@
       <% if current_user.id == @user.id || current_user.admin? %>
       <%= link_to item.item.name, user_item_path(item.id) %><br>
       <% else %>
-      <%= item.item.name %>
+      <%= item.item.name %><br>
       <% end %>
 
       <% end %>
 
       <% end %>
 
-      <h4>Items I have used</h4>
+      <h4>Items used</h4>
 
       <% @user_items_all.returned.each do |item| %>
 
@@ -45,7 +47,7 @@
       <% if current_user.id == @user.id || current_user.admin? %>
       <%= link_to item.item.name, user_item_path(item.id) %><br>
       <% else %>
-      <%= item.item.name %>
+      <%= item.item.name %><br>
       <% end %>
       
       <% end %>

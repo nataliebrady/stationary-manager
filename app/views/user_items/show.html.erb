@@ -11,36 +11,51 @@
          	<h4>User who ordered this:</h4>
          	<%= @user_item.user.name %>
 
+          <h4>When was this item ordered?</h4>
+          <%= (@user_item.created_at).strftime("%d/%m/%Y") %>
+
          	<h4>Will this item be returned?</h4>
 
-         	<% if @user_item.item.borrowable? %>
+
+
+          
+
+          <!-- if the user item can be borrowed then display 'this item was borrowed and will be returned' else display 'this item was taken and will not be returned' -->
+
+         	<% if @user_item.item.borrowable? %> 
          	  This item was borrowed and will be returned
 
-         	  <br><br>
+         	  <br><br><br>
 
-         	  <% if @user_item.user.id == current_user.id && @user_item.returned == false && @user_item.fine == 0 %>
+            <!-- if the user items user id is equal to the current users id and user item isn't returned and the user items fine equals 0 then display 'return' -->
 
-              <%= link_to 'Return',  returning_user_item_path(@user_item), method: :put, data: { confirm: 'Are you sure?' } %>
+         	  <% if @user_item.user.id == current_user.id && @user_item.returned == false && @user_item.fine == 0 %> 
+
+              <%= link_to 'Return',  returning_user_item_path(@user_item), method: :put, class: 'btn btn-login', data: { confirm: 'Are you sure?' } %>
 
             <% end %>
+
+            <!-- if the user items user id is equal to current users id and user item isn't returned and user items fine is more than 0 then display 'return and pay fine' -->
 
             <% if @user_item.user.id == current_user.id && @user_item.returned == false && @user_item.fine > 0 %>
 
-              <%= link_to 'Return and pay fine',  returning_user_item_path(@user_item), method: :put, data: { confirm: 'Are you sure?' } %>
+              <%= link_to 'Return and pay fine',  returning_user_item_path(@user_item), method: :put, class: 'btn btn-login', data: { confirm: 'Are you sure?' } %>
 
          	  <% end %>
 
+            <!-- if the user item is returned then display return date -->
+
          	  <% if @user_item.returned == true %>
 
-         	    This item was returned
+         	    This item was returned on: <%= (@user_item.updated_at).strftime("%d/%m/%Y") %>
 
-         	<% end %>
+         	  <% end %>
 
-         	  <% else %>
+         	<% else %>
 
-         	    This item was taken and will not be returned
+         	  This item was taken and will not be returned
          	
-            <% end %>
+          <% end %>
 
          	<br><br>
 
@@ -49,16 +64,17 @@
 
          <!-- if the created at date (02/10/18) is less than the date today (e.g. 03/10/18 -2 = 01/10/18) then item is overdue -->
 
-           Status:
-           <% if (@user_item.created_at < Date.today-2.days) %>
-              Overdue
-           <% else %>
-              Within return time
-           <% end %>
-           </p>
+          Status:
+          <% if (@user_item.created_at < Date.today-2.days) %>
+            Overdue
+          <% else %>
+            Within return time
+          <% end %>
+          </p>
+
 
          <p>
-
+          <!-- if the user items fine is greater than 0 and it's been returned then display the fine and 'this fine was paid' else display just the fine -->
           <% if(@user_item.fine > 0 && @user_item.returned == true) %>
             Fine:
             <%= number_to_currency(@user_item.fine, {unit: '£', precision: 2 }) %>
