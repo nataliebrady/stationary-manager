@@ -28,7 +28,7 @@
   <td><%= item.id %></td>
   <td><%= link_to item.name, item %></td>
   <td><%= item.item_quantity %></td>
-  <td><%= link_to item.cupboard.name %></td>
+  <td><%= link_to item.cupboard.name, item.cupboard %></td>
 
 <% if item.item_quantity == 0 %>
 
